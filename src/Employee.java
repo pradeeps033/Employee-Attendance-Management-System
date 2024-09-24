@@ -1,6 +1,6 @@
 import java.sql.Date;
 public class Employee {
-	int emp_id;
+	//int emp_id;
 	String emp_name, desig, contactNo;
 	Date date;
 	public Employee(String name,String desi,String con,Date joinDate) {

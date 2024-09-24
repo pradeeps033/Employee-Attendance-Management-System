@@ -4,14 +4,14 @@ import java.sql.Date;
 //import java.text.ParseException;
 import java.text.*;
 public class EmployeeDao {
-	private Date convertStringToSQLDate(String joinDateString)throws ParseException {
+	private static Date convertStringToSQLDate(String joinDateString)throws ParseException {
 		// TODO Auto-generated method stub
 		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date=format.parse(joinDateString);
 		return new Date(date.getTime());
 	}
 	
-	public void addEmployee()throws SQLException	{
+	public static void addEmployee()throws SQLException	{
 		String name,desi,contact,joinDateString;
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter Employee's name: ");
