@@ -41,6 +41,8 @@ public class EmployeeDao {
 		pstmt.executeUpdate();
 		System.out.println("Employee added successfully!");
 		sc.close();
+		DBConnection.closeConn(myConnection);
+		System.out.println("Connection closed!");
 	}
 
 	
