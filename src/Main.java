@@ -16,6 +16,9 @@ public class Main {
 			case 3:
 				AttendanceDao.viewRecords();
 				break;
+			case 4:
+				AttendanceDao.updateAttendance();
+				break;
 			default:
 				System.err.println("Enter a valid number!");
 				break;

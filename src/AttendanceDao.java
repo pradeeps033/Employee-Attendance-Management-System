@@ -58,6 +58,45 @@ public class AttendanceDao {
 		}
 		scanner.close();
 	}
+	
+	public static void updateAttendance()
+	{
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("Enter the Employee ID: ");
+		int id=scanner.nextInt();
+		if(!(isValidEmployee(id))){
+			System.err.println("Enter a valid Employee ID!");
+			scanner.close();
+			return;
+		}
+		System.out.println("Enter Date to modify(yyyy-mm-dd): ");
+		String dateString=scanner.next();
+		String queryString1="update attendance set att_status=? where emp_id=? and att_Date=?";
+		String queryString2="select att_status from attendance where emp_id="+id+" and att_Date='"+dateString+"'";
+		try(Connection connection=DBConnection.createConn();
+				Statement stmtStatement=connection.createStatement();
+				PreparedStatement pstmt=connection.prepareStatement(queryString1)){
+				ResultSet rs=stmtStatement.executeQuery(queryString2);
+				rs.next();
+				System.out.println("Current Status: "+rs.getString("att_status")+"\nDo you wish to change?(y/n)");
+				String yesOrnoString=scanner.next();
+				if(!(yesOrnoString.equals("Y")) && !(yesOrnoString.equals("y")))
+				{
+					return;
+				}
+				System.out.println("Enter the changed status: ");
+				String changedStatString=scanner.next();
+				pstmt.setString(1, changedStatString);
+				pstmt.setInt(2, id);
+				pstmt.setString(3, dateString);
+				pstmt.executeUpdate();
+				System.out.println("Update Successful!");
+				scanner.close();
+	
+		} catch (Exception e) {
+			System.err.println("Enter a valid data!");
+		}
+	}
 
 	private static void filteredRecords() {
 		Scanner scanner=new Scanner(System.in);
