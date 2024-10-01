@@ -12,6 +12,13 @@ public class Main {
 				break;
 			case 2:
 				AttendanceDao.markAttendance();
+				break;
+			case 3:
+				AttendanceDao.viewRecords();
+				break;
+			default:
+				System.err.println("Enter a valid number!");
+				break;
 			}
 			sc.close();
 		}

@@ -27,7 +27,7 @@ public class EmployeeDao {
 			joiningDate=convertStringToSQLDate(joinDateString);
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Enter a valid date format(yyyy-mm-dd)");
+			System.err.println("Enter a valid date format(yyyy-mm-dd)");
 			e.printStackTrace();
 		}
 		String query="insert into Employee(emp_name,designation,JoiningDate,ContactNo) values(?,?,?,?)";
